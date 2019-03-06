@@ -45,14 +45,14 @@ void FrequencyTime::ping() {
 
 float FrequencyTime::frequency() {
 	removeOldPings();
-	if (m_pings.size() < 1)
+	if (m_pings.size() == 0)
 		return 0.0f;
 	
 	return m_pings.size() / m_timeMax;
 }
 float FrequencyTime::period() {
 	removeOldPings();
-	if (m_pings.size() < 1)
+	if (m_pings.size() == 0)
 		return std::numeric_limits<float>::max();
 
 	return m_timeMax / m_pings.size();
