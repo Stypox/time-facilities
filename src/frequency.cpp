@@ -32,8 +32,7 @@ float FrequencyCount::period() {
 void FrequencyTime::removeOldPings() {
 	float now = m_clock.now();
 	auto firstValid = std::find_if(m_pings.begin(), m_pings.end(), [this, now](float ping){ return ping + m_timeMax > now; });
-	if (firstValid != m_pings.end())
-		m_pings.erase(m_pings.begin(), firstValid);
+	m_pings.erase(m_pings.begin(), firstValid);
 }
 
 FrequencyTime::FrequencyTime(const float timeMax) :
