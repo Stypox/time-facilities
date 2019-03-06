@@ -19,9 +19,9 @@ void FrequencyCount::ping() {
 
 float FrequencyCount::frequency() {
 	if (m_currentPing == 0)
-		return m_pings.size() / (m_pings.back() - m_pings.front());
+		return (m_pings.size()-1) / (m_pings.back() - m_pings.front());
 	else
-		return m_pings.size() / (m_pings[m_currentPing - 1] - m_pings[m_currentPing]);
+		return (m_pings.size()-1) / (m_pings[m_currentPing-1] - m_pings[m_currentPing]);
 }
 float FrequencyCount::period() {
 	return 1.0f / frequency();
@@ -48,13 +48,13 @@ float FrequencyTime::frequency() {
 	if (m_pings.size() < 2)
 		return 0.0f;
 	
-	return m_pings.size() / (m_pings.back() - m_pings.front());
+	return (m_pings.size()-1) / (m_pings.back() - m_pings.front());
 }
 float FrequencyTime::period() {
 	removeOldPings();
 	if (m_pings.size() < 2)
 		return std::numeric_limits<float>::max();
 
-	return  (m_pings.back() - m_pings.front()) / m_pings.size();
+	return (m_pings.back() - m_pings.front()) / (m_pings.size()-1);
 }
 } // namespace stypox
