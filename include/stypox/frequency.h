@@ -6,7 +6,7 @@
 #include "clock.h"
 
 namespace stypox {
-class FrequencyCount /*count*/ {
+class FrequencyCount {
 	static Clock<> m_clock;
 
 	std::vector<float> m_pings;
