@@ -1,4 +1,4 @@
-#include "../include/stypox/frequency.h"
+#include "../include/stypox/frequency.hpp"
 
 #include <algorithm>
 

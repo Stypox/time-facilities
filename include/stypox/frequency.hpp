@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include "clock.h"
+#include "clock.hpp"
 
 namespace stypox {
 class FrequencyCount {
