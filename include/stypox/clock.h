@@ -15,7 +15,7 @@ private:
 public:
 	Clock();
 
-	type now();
+	type now() const;
 
 	type restart();
 };
@@ -34,14 +34,16 @@ private:
 public:
 	Chronometer();
 
-	type now();
-	bool stopped();
-	bool paused();
+	type now() const;
+	bool stopped() const;
+	bool paused() const;
 
 	type restart();
 	type stop();
 	type pause();
 };
+
+const Clock<> commonClock{};
 
 
 template <typename T>
@@ -49,7 +51,7 @@ inline Clock<T>::Clock() :
 	m_start{std::chrono::high_resolution_clock::now()} {}
 
 template <typename T>
-inline auto Clock<T>::now() -> Clock<T>::type {
+inline auto Clock<T>::now() const -> Clock<T>::type {
 	return std::chrono::duration<type>{std::chrono::high_resolution_clock::now() - m_start}.count();
 }
 
@@ -68,7 +70,7 @@ inline Chronometer<T>::Chronometer() :
 	m_pause{std::chrono::seconds{-1}} {}
 
 template <typename T>
-inline auto Chronometer<T>::now() -> Chronometer<T>::type {
+inline auto Chronometer<T>::now() const -> Chronometer<T>::type {
 	using namespace std::chrono;
 	if (m_stopped)
 		return duration<type>{m_start.time_since_epoch()}.count();
@@ -78,12 +80,12 @@ inline auto Chronometer<T>::now() -> Chronometer<T>::type {
 		return duration<type>{m_pause.time_since_epoch()}.count();
 }
 template <typename T>
-bool Chronometer<T>::stopped() {
+bool Chronometer<T>::stopped() const {
 	using namespace std::chrono;
 	return m_stopped;
 }
 template <typename T>
-bool Chronometer<T>::paused() {
+bool Chronometer<T>::paused() const {
 	using namespace std::chrono;
 	return m_pause >= time_point<high_resolution_clock>{}; // >= 0
 }

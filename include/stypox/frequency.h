@@ -7,8 +7,6 @@
 
 namespace stypox {
 class FrequencyCount {
-	static Clock<> m_clock;
-
 	std::vector<float> m_pings;
 	unsigned int m_currentPing;
 
@@ -23,8 +21,6 @@ public:
 
 
 class FrequencyTime {
-	static Clock<> m_clock;
-
 	std::vector<float> m_pings;
 	float m_timeMax;
 

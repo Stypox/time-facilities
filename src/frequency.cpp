@@ -3,14 +3,11 @@
 #include <algorithm>
 
 namespace stypox {
-Clock<> FrequencyCount::m_clock{};
-Clock<> FrequencyTime::m_clock{};
-
 FrequencyCount::FrequencyCount(const int nrPings) :
 	m_pings(nrPings, 0.0f), m_currentPing{0} {}
 
 void FrequencyCount::ping() {
-	m_pings[m_currentPing] = m_clock.now();
+	m_pings[m_currentPing] = commonClock.now();
 
 	++m_currentPing;
 	if (m_currentPing == m_pings.size())
@@ -49,20 +46,20 @@ FrequencyTime::FrequencyTime(const float timeMax) :
 	m_timeMax{timeMax} {}
 
 void FrequencyTime::ping() {
-	float now = m_clock.now();
+	float now = commonClock.now();
 	m_pings.push_back(now);
 	removeOldPings(now);
 }
 
 float FrequencyTime::frequency() {
-	removeOldPings(m_clock.now());
+	removeOldPings(commonClock.now());
 	if (m_pings.size() < 2)
 		return 0.0f;
 	
 	return (m_pings.size()-1) / (m_pings.back() - m_pings.front());
 }
 float FrequencyTime::period() {
-	removeOldPings(m_clock.now());
+	removeOldPings(commonClock.now());
 	if (m_pings.size() < 2)
 		return std::numeric_limits<float>::max();
 
