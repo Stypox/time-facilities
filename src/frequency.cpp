@@ -7,10 +7,7 @@ Clock<> FrequencyCount::m_clock{};
 Clock<> FrequencyTime::m_clock{};
 
 FrequencyCount::FrequencyCount(const int nrPings) :
-	m_pings{}, m_currentPing{0} {
-	m_pings.resize(nrPings, 0.0f);
-	m_pings.shrink_to_fit();
-}
+	m_pings(nrPings, 0.0f), m_currentPing{0} {}
 
 void FrequencyCount::ping() {
 	m_pings[m_currentPing] = m_clock.now();
