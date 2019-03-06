@@ -18,13 +18,24 @@ void FrequencyCount::ping() {
 }
 
 float FrequencyCount::frequency() {
+	float totalTime;
 	if (m_currentPing == 0)
-		return (m_pings.size()-1) / (m_pings.back() - m_pings.front());
+		totalTime = m_pings.back() - m_pings.front();
 	else
-		return (m_pings.size()-1) / (m_pings[m_currentPing-1] - m_pings[m_currentPing]);
+		totalTime = m_pings[m_currentPing-1] - m_pings[m_currentPing];
+
+	if (totalTime == 0.0f)
+		return std::numeric_limits<float>::max();
+	return (m_pings.size()-1) / totalTime;
 }
 float FrequencyCount::period() {
-	return 1.0f / frequency();
+	float totalTime;
+	if (m_currentPing == 0)
+		totalTime = m_pings.back() - m_pings.front();
+	else
+		totalTime = m_pings[m_currentPing-1] - m_pings[m_currentPing];
+
+	return totalTime / (m_pings.size()-1);
 }
 
 
