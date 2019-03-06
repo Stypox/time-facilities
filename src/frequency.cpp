@@ -45,16 +45,16 @@ void FrequencyTime::ping() {
 
 float FrequencyTime::frequency() {
 	removeOldPings();
-	if (m_pings.size() == 0)
+	if (m_pings.size() < 2)
 		return 0.0f;
 	
-	return m_pings.size() / m_timeMax;
+	return m_pings.size() / (m_pings.back() - m_pings.front());
 }
 float FrequencyTime::period() {
 	removeOldPings();
-	if (m_pings.size() == 0)
+	if (m_pings.size() < 2)
 		return std::numeric_limits<float>::max();
 
-	return m_timeMax / m_pings.size();
+	return  (m_pings.back() - m_pings.front()) / m_pings.size();
 }
 } // namespace stypox
