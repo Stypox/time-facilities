@@ -23,7 +23,7 @@ float FrequencyCount::frequency() {
 	else
 		return m_pings.size() / (m_pings[m_currentPing - 1] - m_pings[m_currentPing]);
 }
-float FrequencyCount::seconds() {
+float FrequencyCount::period() {
 	return 1.0f / frequency();
 }
 
@@ -51,7 +51,7 @@ float FrequencyTime::frequency() {
 	
 	return m_pings.size() / (m_pings.back() - m_pings.front());
 }
-float FrequencyTime::seconds() {
+float FrequencyTime::period() {
 	removeOldPings();
 	if (m_pings.size() < 2)
 		return std::numeric_limits<float>::max();

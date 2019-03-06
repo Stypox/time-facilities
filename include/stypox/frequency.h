@@ -18,7 +18,7 @@ public:
 	void ping();
 
 	float frequency();
-	float seconds();
+	float period();
 };
 
 
@@ -36,7 +36,7 @@ public:
 	void ping();
 
 	float frequency();
-	float seconds();
+	float period();
 };
 } // namespace stypox
 
