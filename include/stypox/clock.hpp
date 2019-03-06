@@ -43,7 +43,7 @@ public:
 	type pause();
 };
 
-const Clock<> commonClock{};
+extern const Clock<> commonClock;
 
 
 template <typename T>

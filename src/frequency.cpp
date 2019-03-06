@@ -2,6 +2,8 @@
 
 #include <algorithm>
 
+#include "../include/stypox/clock.hpp"
+
 namespace stypox {
 FrequencyCount::FrequencyCount(const int nrPings) :
 	m_pings(nrPings, 0.0f), m_currentPing{0} {}

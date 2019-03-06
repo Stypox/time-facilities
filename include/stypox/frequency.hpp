@@ -3,8 +3,6 @@
 
 #include <vector>
 
-#include "clock.hpp"
-
 namespace stypox {
 class FrequencyCount {
 	std::vector<float> m_pings;
