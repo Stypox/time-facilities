@@ -28,7 +28,7 @@ class FrequencyTime {
 	std::vector<float> m_pings;
 	float m_timeMax;
 
-	void removeOldPings();
+	void removeOldPings(const float now);
 
 public:
 	FrequencyTime(const float timeMax);
