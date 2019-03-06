@@ -18,10 +18,13 @@ void FrequencyCount::ping() {
 }
 
 float FrequencyCount::frequency() {
-	return m_pings.size() / (m_pings[m_currentPing - 1 /* <-- problem when = 0 */] - m_pings[m_currentPing]);
+	if (m_currentPing == 0)
+		return m_pings.size() / (m_pings.back() - m_pings.front());
+	else
+		return m_pings.size() / (m_pings[m_currentPing - 1] - m_pings[m_currentPing]);
 }
 float FrequencyCount::seconds() {
-	return (m_pings[m_currentPing - 1 /* <-- problem when = 0 */] - m_pings[m_currentPing]) / m_pings.size();
+	return 1.0f / frequency();
 }
 
 
