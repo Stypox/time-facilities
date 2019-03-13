@@ -1,5 +1,5 @@
-#ifndef _STYPOX_CLOCK_H_
-#define _STYPOX_CLOCK_H_
+#ifndef _STYPOX_CLOCK_HPP_
+#define _STYPOX_CLOCK_HPP_
 
 #include <chrono>
 

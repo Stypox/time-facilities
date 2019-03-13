@@ -1,5 +1,5 @@
-#ifndef _STYPOX_FREQUENCY_H_
-#define _STYPOX_FREQUENCY_H_
+#ifndef _STYPOX_FREQUENCY_HPP_
+#define _STYPOX_FREQUENCY_HPP_
 
 #include <vector>
 
